@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        'custom-image':'url(/Users/vas/Desktop/my-react-app/public/images/background1.jpg)'
+      }
+    },
   },
   plugins: [],
 }
