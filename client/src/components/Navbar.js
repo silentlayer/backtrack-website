@@ -25,6 +25,20 @@ export default function Navbar() {
                     </li>
                 </ul>
             </div>
+            <div className = "container mx-auto justify-end mr-4 flex flex-row">
+                <ul className="flex space-x-4">
+                    <li>
+                        <button type="button" className="bg-transparent hover:bg-gradient-to-r hover:from-cyan-600 hover:bg-green-600 border-2 border-white w-full rounded-full py-2 px-4" disabled>
+                            <Link to="/login" className="text-white font-mono font-semibold tracking-wide">LOGIN</Link>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" className="bg-transparent hover:bg-gradient-to-r hover:from-cyan-600 hover:bg-green-600 border-2 border-white w-full rounded-full py-2 px-4" disabled>
+                            <Link to="/signup" className="text-white font-mono font-semibold tracking-wide">SIGN UP</Link>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </>
   )

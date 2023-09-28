@@ -5,6 +5,7 @@ const cors = require('cors')
 const app = express() 
 const PORT = 5000
 app.use(cors())
+app.use(express.json())
 
 const db = mysql.createConnection({
     host: "localhost", 
@@ -15,6 +16,29 @@ const db = mysql.createConnection({
 
 app.get('/', (req, res)=>{
     return res.json('main')
+})
+
+app.post('/signup', (req, res)=>{
+    const values = [
+        req.body.email, 
+        req.body.password
+    ]
+    const promp = "SELECT COUNT(*) AS count FROM users WHERE username=(?)"
+    db.query(promp, [values[0]], (err, result)=>{
+        if(err) return res.json(err)
+        const username_count = result[0].count
+        console.log(username_count)
+        if(username_count > 0){
+            return res.json({error: "Username already in use"})
+        }
+        else{
+            const sql = "INSERT INTO users (username, password) VALUES (?)"
+            db.query(sql, [values], (err, data)=>{
+            if(err) return res.json(err)
+            else return res.json(data)
+    })
+        }
+    })
 })
 
 app.get('/users', (req, res)=>{
