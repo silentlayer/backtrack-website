@@ -24,9 +24,9 @@ app.post('/signup', (req, res)=>{
         req.body.password
     ]
     const promp = "SELECT COUNT(*) AS count FROM users WHERE username=(?)"
-    db.query(promp, [values[0]], (err, result)=>{
+    db.query(promp, [values[0]], (err, res)=>{
         if(err) return res.json(err)
-        const username_count = result[0].count
+        const username_count = res[0].count
         console.log(username_count)
         if(username_count > 0){
             return res.json({error: "Username already in use"})
@@ -47,6 +47,19 @@ app.get('/users', (req, res)=>{
         if(err) return res.json(err)
         return res.json(data)
     })
+})
+
+app.post('/login', (req, res)=>{
+    const values = [
+        req.body.username, 
+        req.body.password
+    ]
+    const sql = "SELECT * FROM users WHERE username=(?)"
+    db.query(sql, [values[0]], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+    
 })
 app.listen(5000, ()=>{
     console.log("Server started on port 5000.")
