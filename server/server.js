@@ -7,6 +7,8 @@ const PORT = 5000
 app.use(cors())
 app.use(express.json())
 
+const jwt = require('jsonwebtoken')
+
 const db = mysql.createConnection({
     host: "localhost", 
     user: "root", 
@@ -49,15 +51,50 @@ app.get('/users', (req, res)=>{
     })
 })
 
+//Verification Middleware: 
+const verifyJWT = (req, res, next)=>{
+    const token = localStorage.getItem('accessToken')
+    if(!token){
+        res.send("Err: No Token")
+    }
+    else{
+        jwt.verify(token, "JWTSecret", (err, decoded)=>{
+            if(err) res.json({auth: false, message: "Authorization Failed"})
+            else{
+                return decoded
+            }
+        })
+    }
+}
+
+app.get('/authorize', verifyJWT,(req, res)=>{
+    res.send("You are authenticated!")
+    
+
+})
+
 app.post('/login', (req, res)=>{
-    const values = [
-        req.body.username, 
-        req.body.password
-    ]
     const sql = "SELECT * FROM users WHERE username=(?)"
-    db.query(sql, [values[0]], (err,data)=>{
+    db.query(sql, req.body.username, (err,data)=>{
         if(err) return res.json(err)
-        return res.json(data)
+        if(data.length == 0){
+            return res.json({error: `No username found for ${req.body.username}`})
+        }
+        if(req.body.password == data[0].password){
+
+            //Successful login: Create JWT Token
+            const id = data[0].id 
+            const token = jwt.sign({id}, "JWTSecret", {
+                expiresIn: 300, 
+            })
+
+            //TODO 
+            return res.json({auth: true, token: token, result: data})
+
+        }
+        else{
+            res.send('Incorrect Username/Password')
+        }
     })
     
 })

@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import axios from 'axios'; 
-//import {useNavigate} from "react-router-dom"; 
+import {useNavigate} from "react-router-dom"; 
 
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailInUse, setEmailInUse] = useState(false)
-    //const navigate = useNavigate()
+    const navigate = useNavigate()
 
 
     const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('http://localhost:5000/login', {username: email, password: password})
     .then(res => {
-      console.log(res.data[0].password)
-      if(password == res.data[0].password){
-        console.log('Sucess!')
+      if(res.data.error){
+        console.log(res.data.error)
+      }
+      else{
+        if(res.status === 200){
+          const token = res.data.token
+          console.log(token)
+          if(localStorage.getItem('accessToken')){
+            localStorage.removeItem('accessToken')
+          }
+          localStorage.setItem('accessToken', token)
+          navigate('/')
+        }
+        //console.log(res)
       }
     })
     .catch(err => console.log(err))
