@@ -10,27 +10,17 @@ function Login() {
 
 
     const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('http://localhost:5000/login', {username: email, password: password})
-    .then(res => {
-      if(res.data.error){
-        console.log(res.data.error)
-      }
-      else{
+      e.preventDefault();
+      axios.post('http://localhost:5000/login', {username: email, password: password})
+      .then(res => {
         if(res.status === 200){
-          const token = res.data.token
-          console.log(token)
-          if(localStorage.getItem('accessToken')){
-            localStorage.removeItem('accessToken')
-          }
-          localStorage.setItem('accessToken', token)
+          //TODO 
+          console.log(res)
           navigate('/')
         }
-        //console.log(res)
-      }
-    })
-    .catch(err => console.log(err))
-  };
+      })
+      .catch(err => console.log(err))
+    };
 
     return (
         <div className="flex h-screen bg-black">

@@ -77,6 +77,11 @@ app.post('/token', (req, res)=>{
     })
 })
 
+app.delete('/logout', (req, res)=>{
+    refreshTokens = refreshTokens.filter(token => token !== req.body.token)
+    res.sendStatus(204)
+})
+
 
 //LOG IN 
 app.post('/login', (req, res)=>{
@@ -88,7 +93,7 @@ app.post('/login', (req, res)=>{
         }
         if(req.body.password == data[0].password){
             const token = generateAccessToken(req.body)
-            const refreshToken = jwt.sign(req.body, process.env.ACCESS_TOKEN_SECRET)
+            const refreshToken = jwt.sign(req.body, process.env.REFRESH_TOKEN_SECRET)
             refreshTokens.push(refreshToken)
             return res.json({auth: true, accessToken: token, 
             refreshToken: refreshToken, result: data})

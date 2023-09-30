@@ -1,5 +1,5 @@
 GET http://localhost:5000/users 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhY29zNHBhY29zQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMjNvNCIsImlhdCI6MTY5NjEwNzEyNSwiZXhwIjoxNjk2MTA3NzI1fQ.BIqnbehM14jtAtE2obOLwpy2lnCSOYJ9qdsCfLe0c7I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhY29zNHBhY29zQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMjNvNCIsImlhdCI6MTY5NjEwOTMxNSwiZXhwIjoxNjk2MTA5MzQ1fQ.4-zRf6o0-0EK_S8CDmG4MtXCvrniYQh-Sd3Jxp51PF4
 
 ### 
 
@@ -17,7 +17,17 @@ POST http://localhost:5000/token
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhY29zNHBhY29zQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMjNvNCIsImlhdCI6MTY5NjEwNzMyMX0.H_qyPmmwNAtf1mnknOdMFH6eN9FE9gqPMpp64id-KDo"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhY29zNHBhY29zQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMjNvNCIsImlhdCI6MTY5NjEwOTU4M30.k7qopw_C963qLdZlWXKE6AtubpLw6lI19q5XiIQ-fe0"
 }
+
+###
+
+DELETE http://localhost:5000/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhY29zNHBhY29zQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMjNvNCIsImlhdCI6MTY5NjEwOTU4M30.k7qopw_C963qLdZlWXKE6AtubpLw6lI19q5XiIQ-fe0"
+}
+
 
 
