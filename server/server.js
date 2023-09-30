@@ -99,7 +99,7 @@ app.post('/login', (req, res)=>{
             refreshToken: refreshToken, result: data})
 
         }
-        else return res.json({error: "Incorrect Username/Password"})
+        else return res.json({auth: false, error: "Incorrect Username/Password"})
         
     })
     

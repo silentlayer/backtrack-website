@@ -16,6 +16,8 @@ function Login() {
         if(res.status === 200){
           //TODO 
           console.log(res)
+          const jwtToken = res.data.accessToken
+          sessionStorage.setItem('accessToken', jwtToken)
           navigate('/')
         }
       })
