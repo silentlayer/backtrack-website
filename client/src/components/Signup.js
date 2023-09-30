@@ -12,7 +12,7 @@ function Signup() {
     const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:5000/signup', {email, password})
+    axios.post('http://localhost:5000/signup', {username: email, password: password})
     .then(res => {
         if(res.data.error){
             setEmailInUse(true)
