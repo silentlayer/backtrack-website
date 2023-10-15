@@ -6,7 +6,7 @@ const FALSE = 0
 require('dotenv').config()
 
 
-async function checkKey(){
+async function redisCheckKey(){
     if(redisClient.exists('access_token') != FALSE){
         return  
     }
@@ -18,4 +18,4 @@ async function checkKey(){
     if (access_token) redisClient.setEx('access_token', DEFAULT_EXPIRATION, access_token)
 }
 
-module.exports = { checkKey }
+module.exports = { redisCheckKey }

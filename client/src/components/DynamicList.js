@@ -1,15 +1,18 @@
 import React from "react";
+import {SongButton, SongCrate} from "./songButton";
 
 const DynamicList = ({ song_list }) => {
   return (
-    <ul className = "space-y-2">
-      {song_list.map((song) => (
-          <li key={song.id} className="border border-white mb-2 py-2 px-4 bg-black rounded-lg">
-            <h3 className = "text-white font-mono ">{song.name}</h3>
-            <p className = "text-white font-mono ">{song.artist}</p>
-          </li> 
-      ))}
-    </ul>
+    <>
+      <SongButton/>
+      <ul className = "mt-2 space-y-2">
+        {song_list.map((song) => (
+              <li key={song.id}>
+                <SongCrate name={song.name} artist={song.artist}/>
+              </li>      
+        ))}
+      </ul>
+    </>
   );
 };
 

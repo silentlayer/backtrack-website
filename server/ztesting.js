@@ -1,9 +1,9 @@
-const { getAccessToken } = require('./getAccessToken')
-const { getSongInfo } = require('./getSongInfo')
-const { checkKey } = require("./redis_server")
+// const { getAccessToken } = require('./getAccessToken')
+// const { getSongInfo } = require('./getSongInfo')
+// const { checkKey } = require("./redis_server")
 
-require('dotenv').config()
+// require('dotenv').config()
 
-checkKey() 
+// checkKey() 
 
 
