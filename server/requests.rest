@@ -30,4 +30,22 @@ Content-Type: application/json
 }
 
 
+### 
+POST https://accounts.spotify.com/api/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=d49a1766a47d406f8e827bf35bdc6865&client_secret=d10ecf5d51864e58a517facda974f845
+
+###
+GET https://api.spotify.com/v1/search?q=codeine%20crazy&type=track&market=US&limit=3
+Content-type: application/json
+Authorization: Bearer BQDln1hgYVub5XcUaeB57-VzjjIz8-7dujmKQ647oyeLvDm_S_ohT3ghiPEkU6c-KCzW6EiJSt1LTfs1Be8nRAjKAR5-EJFqLQ4p7DoxoGOT76uQ2kk
+
+
+###
+
+Get https://api.spotify.com/v1/tracks/0joQFwiBKmi6X1Iq5R1ubH
+Content-type: application/json
+Authorization: Bearer BQDln1hgYVub5XcUaeB57-VzjjIz8-7dujmKQ647oyeLvDm_S_ohT3ghiPEkU6c-KCzW6EiJSt1LTfs1Be8nRAjKAR5-EJFqLQ4p7DoxoGOT76uQ2kk
+
 

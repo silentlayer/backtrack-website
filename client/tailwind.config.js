@@ -5,9 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage:{
-        'custom-image':'url(/Users/vas/Desktop/my-react-app/client/public/images/background1.jpg)'
-      }
+      // backgroundImage:{
+      //   'custom-image':'url(/Users/vas/Desktop/my-react-app/client/public/images/background1.jpg)'
+      // }
     },
   },
   plugins: [],
