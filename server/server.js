@@ -112,12 +112,11 @@ app.post('/login', (req, res)=>{
  * TESTING <==================================================================
  */
 
-
 //SEARCH SONG -- SPOTIFY API 
 app.post('/api/search', async(req, res)=>{
 
     const access_token = await redisCheckKey()
-    return res.json({access: access_token})
+    return res.json({token: access_token})
     // let query = req.body.query
     // for(let i = 0; i < query.length; i++){
     //     if(query[i] == " ") query[i] = "%20"
@@ -134,14 +133,6 @@ app.post('/api/search', async(req, res)=>{
     // }
 })
 
-// app.post('/api/search', async (req, res)=>{
-
-//     const client_id = process.env.SPOTIFY_CLIENT_ID
-//     const client_secret = process.env.SPOTIFY_CLIENT_SECRET 
-
-//     const access_token = await getAccessToken(client_id, client_secret)
-//     return res.json({access_token: access_token})
-// })
 
 app.listen(PORT, ()=>{
     console.log("Server started on port 5000.")
