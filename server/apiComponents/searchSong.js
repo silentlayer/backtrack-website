@@ -1,8 +1,12 @@
 const axios = require('axios')
 
-async function getSongInfo(accessToken, trackId){
+async function searchSong(accessToken, query){
+    for(let i = 0; i < query.length; i++){
+      if(query[i] == " ") query[i] = "%20"
+    }
+
     try{
-        const response = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
+        const response = await axios.get(`https://api.spotify.com/v1/search?q=${query}&type=track&market=US&limit=3`, {
             headers: {
               'Authorization': `Bearer ${accessToken}`,
             },
@@ -14,4 +18,4 @@ async function getSongInfo(accessToken, trackId){
     }
 }
 
-module.exports = { getSongInfo} 
+module.exports = { searchSong}  
