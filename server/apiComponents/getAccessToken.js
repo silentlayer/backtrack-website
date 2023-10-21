@@ -15,7 +15,7 @@ async function getAccessToken(client_id, client_secret) {
 
     if (response.status === 200) {
       const accessToken = await response.data.access_token
-      return accessToken;
+      return accessToken
     } else {
       throw new Error(`Failed to obtain access token. Error: ${response.status}`);
     }

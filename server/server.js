@@ -116,21 +116,21 @@ app.post('/login', (req, res)=>{
 app.post('/api/search', async(req, res)=>{
 
     const access_token = await redisCheckKey()
-    return res.json({token: access_token})
-    // let query = req.body.query
-    // for(let i = 0; i < query.length; i++){
-    //     if(query[i] == " ") query[i] = "%20"
-    // }
-    // try{
-    //     const response = axios.get(`https://api.spotify.com/v1/search?q=${query}&type=track&market=US&limit=3`, {
-    //         headers: {
-    //           'Authorization': `Bearer ${access_token}`,
-    //         },
-    //       })
-    //     return res.json(response.data)
-    // } catch(error){
-    //     throw new Error(`getSongInfo failed: ${error}`)
-    // }
+    //return res.json({token: access_token})
+    let query = req.body.query
+    for(let i = 0; i < query.length; i++){
+        if(query[i] == " ") query[i] = "%20"
+    }
+    try{
+        const response = await axios.get(`https://api.spotify.com/v1/search?q=${query}&type=track&market=US&limit=3`, {
+            headers: {
+              'Authorization': `Bearer ${access_token}`,
+            },
+          })
+        return res.json(response.data)
+    } catch(error){
+        throw new Error(`getSongInfo failed: ${error}`)
+    }
 })
 
 
