@@ -11,6 +11,8 @@ const PORT = 5000
 app.use(cors())
 app.use(express.json())
 
+const SONG_LIMIT = 3
+
 const jwt = require('jsonwebtoken')
 
 const db = mysql.createConnection({
@@ -111,6 +113,7 @@ app.post('/login', (req, res)=>{
 /**
  * TESTING <==================================================================
  */
+const {parseData} = require('./parseData.js')
 
 //SEARCH SONG -- SPOTIFY API 
 app.post('/api/search', async(req, res)=>{
@@ -122,12 +125,15 @@ app.post('/api/search', async(req, res)=>{
         if(query[i] == " ") query[i] = "%20"
     }
     try{
-        const response = await axios.get(`https://api.spotify.com/v1/search?q=${query}&type=track&market=US&limit=3`, {
+        const response = await axios.get(`https://api.spotify.com/v1/search?q=${query}&type=track&market=US&limit=${SONG_LIMIT}`, {
             headers: {
               'Authorization': `Bearer ${access_token}`,
             },
           })
-        return res.json(response.data)
+
+        const newMap = parseData(response.data, SONG_LIMIT) 
+        return res.json(newMap)
+
     } catch(error){
         throw new Error(`getSongInfo failed: ${error}`)
     }
