@@ -13,7 +13,7 @@ const SongCard = ({ id, title, artist, image, link }) => {
           <h3 className="text-5xl font-bold">{title}</h3>
           <p className="text-xl font-light">{artist}</p>
           <p>{`id: ${id}`}</p>
-          {/* <Spotify link={link}/> */}
+          <Spotify link={link}/>
 
 
         </div>   

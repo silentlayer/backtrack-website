@@ -43,7 +43,8 @@ export function SearchBar() {
        <div className = "w-3/4 scroll-container">  
             {songInfo.map(song => (
                 <div className=" mb-4">
-                <SongCard key={song[0]} id={song[0]} title={song[1]} artist={song[2]} image={song[3]} link={song[4]}/> 
+                {/* <SongCard key={song[0]} id={song[0]} title={song[1]} artist={song[2]} image={song[3]} link={song[4]}/>  */}
+                <Spotify wide link={song[4]}/>
                 </div>
             ))}
         </div>
