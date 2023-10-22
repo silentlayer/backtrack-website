@@ -131,8 +131,8 @@ app.post('/api/search', async(req, res)=>{
             },
           })
 
-        const newMap = parseData(response.data, SONG_LIMIT) 
-        return res.json(newMap)
+        const newArr = parseData(response.data, SONG_LIMIT) 
+        return res.json(newArr)
 
     } catch(error){
         throw new Error(`getSongInfo failed: ${error}`)

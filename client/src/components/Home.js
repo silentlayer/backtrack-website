@@ -9,7 +9,7 @@ const Home= () => {
   const jwtToken = sessionStorage.getItem('accessToken')
   if(jwtToken) console.log(jwtToken)
   return (
-    <div className="mx-auto p-4 bg-black bg-no-repeat bg-cover w-full h-screen">
+    <div className="mx-auto p-4 bg-black bg-no-repeat bg-cover w-full h-full">
       {/* <SongButton/> */}
       {/* <DynamicList song_list={songs}/> */}
       <SearchBar/>
