@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import SongCard from './songCard.js';
+import {Spotify} from 'react-spotify-embed'
 
 export function SearchBar() {
     const [searchValue, setSearchValue] = useState('')
@@ -16,7 +17,7 @@ export function SearchBar() {
         axios.post('http://localhost:5000/api/search', {query: searchValue})
         .then(res => {
             if(res.status === 200){
-                //console.log(res.data)
+                // console.log(res.data)
                 setSongInfo(res.data)            
             }
         })
@@ -42,7 +43,7 @@ export function SearchBar() {
        <div className = "w-3/4 scroll-container">  
             {songInfo.map(song => (
                 <div className=" mb-4">
-                <SongCard id={song[0]} title={song[1]} artist={song[2]} image={song[3]} preview={song[4]}/> 
+                <SongCard key={song[0]} id={song[0]} title={song[1]} artist={song[2]} image={song[3]} link={song[4]}/> 
                 </div>
             ))}
         </div>

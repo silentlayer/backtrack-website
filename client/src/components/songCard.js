@@ -1,7 +1,8 @@
 import React from 'react'
+import {Spotify} from 'react-spotify-embed'
 
 
-const SongCard = ({ id, title, artist, image, preview }) => {
+const SongCard = ({ id, title, artist, image, link }) => {
     return (
       <div className="w-full h-auto bg-white rounded-lg flex">
         <div className="">
@@ -12,8 +13,9 @@ const SongCard = ({ id, title, artist, image, preview }) => {
           <h3 className="text-5xl font-bold">{title}</h3>
           <p className="text-xl font-light">{artist}</p>
           <p>{`id: ${id}`}</p>
-          <a href={preview}>Preview</a>
-          <button data-preview-url={preview}>Play</button>
+          {/* <Spotify link={link}/> */}
+
+
         </div>   
       </div>
     );
