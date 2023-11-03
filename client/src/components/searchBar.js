@@ -49,6 +49,7 @@ export function SearchBar() {
               }`}
             >
               {/* <SongCard key={song[0]} id={song[0]} title={song[1]} artist={song[2]} image={song[3]} link={song[4]}/>  */}
+
               <Spotify wide link={song[4]} />
             </div>
           ))}

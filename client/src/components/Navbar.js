@@ -18,7 +18,7 @@ export default function Navbar() {
                   to="/"
                   className="text-white font-mono font-semibold tracking-wide"
                 >
-                  Top 100
+                  BASE
                 </Link>
               </button>
             </li>
