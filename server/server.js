@@ -111,6 +111,27 @@ app.post("/login", (req, res) => {
   });
 });
 
+//RANKINGS SONG-DB
+app.post("/rankings", (req, res) => {
+  const sql_1 = "SELECT * FROM songs WHERE song_id = ?";
+  db.query(sql_1, req.body.song_id, (err, data) => {
+    if (err) return res.json(err);
+    if (data.length == 0) {
+      //add a new entry
+      const sql_2 = "INSERT INTO songs (song_id, song_name) VALUES (?, ?)";
+      const values_1 = [req.body.song_id, req.body.song_name];
+      db.query(sql_2, values_1, (err, data) => {
+        if (err) return res.json(err);
+        return res.json("Inserted");
+      });
+    }
+    //song already in db
+    else {
+      return res.json(data);
+    }
+  });
+});
+
 /**
  * TESTING <==================================================================
  */

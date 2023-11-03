@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SongCard from "./songCard.js";
+import RankButton from "./RankButton";
 import { Spotify } from "react-spotify-embed";
 
 export function SearchBar() {
@@ -44,13 +44,16 @@ export function SearchBar() {
           {songInfo.map((song, index) => (
             <div
               key={index}
-              className={` mb-4 animate-fade-left animate-delay-${
-                100 + index * 100
-              }`}
+              className={` mb-4 animate-fade-left flex items-center`}
             >
               {/* <SongCard key={song[0]} id={song[0]} title={song[1]} artist={song[2]} image={song[3]} link={song[4]}/>  */}
-
-              <Spotify wide link={song[4]} />
+              <div className="w-11/12">
+                <Spotify wide link={song[4]} />
+              </div>
+              <div>
+                {/*PLACE RATE BUTTON HERE*/}
+                <RankButton />
+              </div>
             </div>
           ))}
         </div>

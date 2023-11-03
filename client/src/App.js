@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Genre from "./components/byGenre.js";
+import Rankings from "./components/Rankings.js";
 import Artist from "./components/byArtist.js";
 import Home from "./components/Home.js";
 import Login from "./components/Login.js";
@@ -16,7 +16,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/genre" element={<Genre />} />
+            <Route path="/rankings" element={<Rankings />} />
             <Route path="/artist" element={<Artist />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />

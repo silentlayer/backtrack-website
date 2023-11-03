@@ -18,7 +18,7 @@ export default function Navbar() {
                   to="/"
                   className="text-white font-mono font-semibold tracking-wide"
                 >
-                  BASE
+                  SEARCH
                 </Link>
               </button>
             </li>
@@ -29,10 +29,10 @@ export default function Navbar() {
                 disabled
               >
                 <Link
-                  to="/genre"
+                  to="/rankings"
                   className="text-white font-mono font-semibold tracking-wide"
                 >
-                  GENRE
+                  RANKS
                 </Link>
               </button>
             </li>
