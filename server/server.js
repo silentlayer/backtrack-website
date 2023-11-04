@@ -133,7 +133,22 @@ app.post("/rankings", (req, res) => {
     }
     //song already in db
     else {
-      return res.json(data);
+      if (data.length > 1) {
+        return res.json("Err: many song entries for that ID");
+      }
+      const top_song = data[0];
+      const song_id = top_song.song_id;
+      const song_num_rates = parseInt(top_song.song_num_rates, 10) + 1;
+      const song_rating =
+        parseInt(top_song.song_total_rating, 10) +
+        parseInt(req.body.song_rating, 10);
+      const sql_3 =
+        "UPDATE songs SET song_total_rating = ?, song_num_rates = ? WHERE song_id = ?";
+      const values_2 = [song_rating, song_num_rates, song_id];
+      db.query(sql_3, values_2, (err, data) => {
+        if (err) return res.json(err);
+        return res.json("updated!");
+      });
     }
   });
 });

@@ -3,3 +3,12 @@ To start server:
 Navigate to client => npm start
 Nagivate to server => redis-server, npm run dev
 XAMMP/MySQL => initiate web and MySQL server
+
+DEV tips: 
+- searchBar.js songinfo follows patter
+    0. Song id
+    1. Song title
+    2. Song artist
+    3. Song image
+    4. Song link/preview 
+

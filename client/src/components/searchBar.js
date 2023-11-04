@@ -9,6 +9,10 @@ export function SearchBar() {
   const [songInfo, setSongInfo] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
 
+  const [curSongInfo, setCurSongInfo] = useState([
+    { id: null, name: null, artist: null, image: null, link: null },
+  ]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchValue.trim() === "") {
@@ -26,11 +30,21 @@ export function SearchBar() {
       .catch((err) => console.log(err));
   };
 
+  const updateSongInfo = (song) => {
+    setCurSongInfo({
+      id: song[0],
+      name: song[1],
+      artist: song[2],
+      image: song[3],
+      link: song[4],
+    });
+    setShowPopup(true);
+  };
+
   return (
     <>
       <div className="flex justify-center border-white">
         <form onSubmit={handleSubmit} className="w-full flex justify-center">
-          {/* <button onClick ={handleSubmit} className = "w-32 h-14 bg-gradient-to-r from-blue-600 to-green-400 text-white rounded-lg border-white border-2">SEARCH</button> */}
           <input
             type="text"
             placeholder="search for a song"
@@ -40,9 +54,7 @@ export function SearchBar() {
           />
         </form>
       </div>
-      <div className="h-12 bg-black justify-items-center">
-        {/* <Popup isOpen={showPopup} onClose={() => setShowPopup(false)}></Popup> */}
-      </div>
+      <div className="h-12 bg-black justify-items-center"></div>
       <div className="mt-2 flex justify-center">
         <div className="w-3/4">
           {songInfo.map((song, index) => (
@@ -50,19 +62,22 @@ export function SearchBar() {
               key={index}
               className={` mb-4 animate-fade-left flex items-center`}
             >
-              {/* <SongCard key={song[0]} id={song[0]} title={song[1]} artist={song[2]} image={song[3]} link={song[4]}/>  */}
               <div className="w-11/12">
                 <Spotify wide link={song[4]} />
               </div>
               <div>
                 {/*PLACE RATE BUTTON HERE*/}
-                <RankButton onClick={() => setShowPopup(true)} />
+                <RankButton onClick={() => updateSongInfo(song)} />
               </div>
             </div>
           ))}
         </div>
       </div>
-      <Popup isOpen={showPopup} onClose={() => setShowPopup(false)}></Popup>
+      <Popup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+        song={curSongInfo}
+      ></Popup>
     </>
   );
 }
