@@ -20,6 +20,7 @@ function Popup({ isOpen, onClose, song }) {
         song_id: song.id,
         song_name: song.name,
         song_rating: rating,
+        song_link: song.link,
       })
       .then((res) => {
         if (res.status === 200) {

@@ -36,7 +36,7 @@ export default function Navbar() {
                 </Link>
               </button>
             </li>
-            <li>
+            {/* <li>
               <button
                 type="button"
                 className="bg-transparent hover:bg-gradient-to-r hover:from-cyan-600 hover:bg-green-600 border-2 border-white w-full rounded-full py-2 px-4"
@@ -49,7 +49,7 @@ export default function Navbar() {
                   ARTIST
                 </Link>
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="container mx-auto justify-end mr-4 flex flex-row">

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import RankButton from "./RankButton";
 import { Spotify } from "react-spotify-embed";
 import Popup from "./RankPopup";
+import { useNavigate } from "react-router-dom";
 
 export function SearchBar() {
+  const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
   const [songInfo, setSongInfo] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -31,6 +33,12 @@ export function SearchBar() {
   };
 
   const updateSongInfo = (song) => {
+    let user_JWT = sessionStorage.getItem("accessToken");
+    if (user_JWT == null) {
+      //Please login
+      navigate("/login");
+      return;
+    }
     setCurSongInfo({
       id: song[0],
       name: song[1],
