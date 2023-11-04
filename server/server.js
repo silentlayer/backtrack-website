@@ -118,8 +118,14 @@ app.post("/rankings", (req, res) => {
     if (err) return res.json(err);
     if (data.length == 0) {
       //add a new entry
-      const sql_2 = "INSERT INTO songs (song_id, song_name) VALUES (?, ?)";
-      const values_1 = [req.body.song_id, req.body.song_name];
+      const sql_2 =
+        "INSERT INTO songs (song_id, song_name, song_total_rating, song_num_rates) VALUES (?, ?, ?, ?)";
+      const values_1 = [
+        req.body.song_id,
+        req.body.song_name,
+        req.body.song_rating,
+        1,
+      ];
       db.query(sql_2, values_1, (err, data) => {
         if (err) return res.json(err);
         return res.json("Inserted");

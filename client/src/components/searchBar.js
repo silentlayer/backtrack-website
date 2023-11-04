@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RankButton from "./RankButton";
 import { Spotify } from "react-spotify-embed";
+import Popup from "./RankPopup";
 
 export function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
   const [songInfo, setSongInfo] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +40,9 @@ export function SearchBar() {
           />
         </form>
       </div>
-      <div className="h-12"></div>
+      <div className="h-12 bg-black justify-items-center">
+        {/* <Popup isOpen={showPopup} onClose={() => setShowPopup(false)}></Popup> */}
+      </div>
       <div className="mt-2 flex justify-center">
         <div className="w-3/4">
           {songInfo.map((song, index) => (
@@ -52,12 +56,13 @@ export function SearchBar() {
               </div>
               <div>
                 {/*PLACE RATE BUTTON HERE*/}
-                <RankButton />
+                <RankButton onClick={() => setShowPopup(true)} />
               </div>
             </div>
           ))}
         </div>
       </div>
+      <Popup isOpen={showPopup} onClose={() => setShowPopup(false)}></Popup>
     </>
   );
 }

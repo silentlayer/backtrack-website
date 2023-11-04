@@ -1,0 +1,5 @@
+To start server: 
+
+Navigate to client => npm start
+Nagivate to server => redis-server, npm run dev
+XAMMP/MySQL => initiate web and MySQL server
